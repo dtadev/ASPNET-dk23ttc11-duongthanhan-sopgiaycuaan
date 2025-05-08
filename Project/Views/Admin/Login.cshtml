@@ -1,0 +1,299 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Login</title>
+
+    <link href="~/Content/font-face.css" rel="stylesheet" media="all">
+    <link href="~/Content/theme.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    @* <link href="~/Content/theme.css" rel="stylesheet" media="all"> *@
+
+<style>
+        /* Custom CSS to match the image design */
+
+        body {
+            font-family: sans-serif; /* Or your preferred font */
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Fallback color */
+             /* Ensure body takes at least viewport height for centering */
+            min-height: 100vh;
+            display: flex; /* Use flex to help center page-wrapper */
+        }
+
+        .page-wrapper {
+            flex-grow: 1; /* Allow page-wrapper to fill available space */
+            display: flex; /* Use flexbox to center content */
+            align-items: center; /* Vertically center */
+            justify-content: center; /* Horizontally center */
+            padding: 20px; /* Add some padding for smaller screens */
+        }
+
+        .page-content--bge5 {
+            /* Styles for the background based on the image */
+            width: 100%;
+            min-height: 90vh; /* Ensure background covers full height */
+            display: flex; /* Use flex to center content inside */
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        /* Removed original .wrap styles based on padding */
+        /* .wrap { ... } */
+
+        .login-wrap {
+            width: 100%;
+            max-width: 800px; /* Adjust max width of the login box */
+            background-color: #fff; /* White background */
+            border-radius: 15px; /* Rounded corners for the main box */
+            overflow: hidden; /* Hide anything outside the rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            display: flex; /* Use flex on this wrapper */
+        }
+
+        .login-content {
+            /* This div now contains the row with two columns */
+             width: 100%; /* Ensure it takes full width of its parent (.login-wrap) */
+        }
+
+
+        .login-illustration {
+            background-color: #f0f2f5; /* Background color for illustration side */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            /* Add background image for the illustration */
+            /*background-image: url('path/to/your/illustration.svg');*/ /* <-- Replace with your illustration path */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .login-form-container {
+            padding: 40px; /* Padding inside the form column */
+            display: flex; /* Use flex for column layout inside */
+            flex-direction: column;
+            justify-content: center; /* Center form content vertically */
+        }
+
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo h1, .login-logo h2 { /* Support both h1 from original and h2 from image title */
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Style for the input group container */
+        .login-form .input-group {
+            border: 1px solid #ddd; /* Subtle border around the combined input/icon */
+            border-radius: 25px; /* Rounded shape for the entire input field */
+            overflow: hidden; /* Hide anything outside the border-radius */
+            padding: 0 15px; /* Padding inside the rounded box */
+            background-color: #fff; /* White background */
+            align-items: center; /* Vertically center items inside input group */
+        }
+
+         /* Style for the icon span within the input group */
+         .login-form .input-group-text {
+             background-color: transparent; /* No background color */
+             border: none; /* No border */
+             padding: 0 10px 0 0; /* Space between icon and input text */
+             color: #888; /* Icon color (adjust as needed) */
+             font-size: 18px; /* Icon size */
+         }
+
+        /* Style for the actual input element */
+        .login-form .form-control {
+            border: none; /* Remove default input border */
+            box-shadow: none; /* Remove default focus shadow */
+            padding: 10px 0; /* Adjust vertical padding */
+            background: transparent; /* Make input background transparent */
+        }
+
+        .login-form .form-control::placeholder {
+             color: #aaa; /* Placeholder text color */
+        }
+
+        /* Style for the Login button */
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px; /* Rounded button */
+            /* Gradient background from image */
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border: none; /* Remove button border */
+            color: white; /* White text color */
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            transition: opacity 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .btn-login:hover {
+            opacity: 0.9; /* Reduce opacity slightly on hover */
+             /* Optional: reverse gradient on hover */
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+
+        /* Style for links below the button */
+        .login-form .form-links a {
+            color: #2575fc; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-size: 14px;
+        }
+         .login-form .form-links a:hover {
+             text-decoration: underline;
+         }
+
+         /* Style for terms and privacy links */
+         .terms-privacy-links {
+             text-align: center;
+             margin-top: 40px; /* Space above these links */
+         }
+         .terms-privacy-links small a {
+             color: #888; /* Grey color */
+             text-decoration: none;
+             font-size: 12px;
+             margin: 0 5px;
+         }
+          .terms-privacy-links small a:hover {
+              text-decoration: underline;
+          }
+
+
+        /* Responsive adjustments using Bootstrap breakpoints */
+        @*@media (max-width: 767.98px) { /* Below md breakpoint */
+             .login-illustration {
+                 display: none; /* Hide illustration on small screens */
+             }
+             .login-wrap {
+                 max-width: 400px; /* Make login box narrower on small screens */
+             }
+             .login-form-container {
+                 padding: 30px; /* Adjust padding */
+             }
+        }*@
+
+</style>
+</head>
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            @* Removed the .wrap div *@
+            <div class="container">
+                @* Use Bootstrap container for centering and max-width *@
+                <div class="login-wrap">
+                    @* Wrapper for the login card *@
+                    <div class="login-content">
+                        @* Main content area, will contain the row *@
+                        <div class="row g-0">
+                            @* g-0 removes gutters between columns *@
+                            <div class="col-md-6 login-illustration d-none d-md-flex">
+                                @* <img src="path/to/your/illustration.svg" alt="Illustration" class="img-fluid"> *@
+                            </div>
+
+                            <div class="col-md-6 login-form-container">
+                                <div class="login-logo">
+                                    <h1>Login as a Admin User</h1> @* Updated title text *@
+                                </div>
+                                <div class="login-form">
+                                    @* Your existing Razor form code *@
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.ValidationSummary(true)
+                                        <div class="form-group">
+                                            <label for="txt_Username">Account</label>
+                                            <div class="input-group">
+                                                @* Bootstrap input group *@
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span> @* Font Awesome 5 User icon *@
+                                                <input type="text" id="txt_Username" name="txt_Username" class="form-control" required="required" maxlength="30" placeholder="johndoe@xyz.com" /> @* Use form-control and example placeholder *@
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_Password">Password</label>
+                                            <div class="input-group">
+                                                @* Bootstrap input group *@
+                                                <span class="input-group-text"><i class="fas fa-lock"></i></span> @* Font Awesome 5 Lock icon *@
+                                                <input type="password" id="txt_Password" name="txt_Password" class="form-control" required="required" placeholder="********" /> @* Use form-control and example placeholder *@
+                                            </div>
+                                        </div>
+
+                                        @* Removed the extra <br /> *@
+
+                                        <button class="btn btn-primary btn-login" type="submit">LOGIN</button> @* Use Bootstrap btn classes and custom btn-login *@
+
+                                        <div class="text-center form-links">
+                                            @* Centering text and adding class *@
+                                            <a href="#">Forget your password?</a><br>
+                                            <a href="#">Get help Signed in.</a>
+                                        </div>
+                                    }
+                                </div>
+                                @* Terms of use & Privacy policy links *@
+                                <div class="terms-privacy-links">
+                                    <small>
+                                        <a href="#">Terms of use.</a>
+                                        <a href="#">Privacy policy</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="~/vendor/slick/slick.min.js"></script>
+    <script src="~/vendor/wow/wow.min.js"></script>
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+
+    <script>
+        // Your existing or new jQuery code can go here
+        $(document).ready(function () {
+            $('.animsition').animsition({
+                // Animsition options
+            });
+        });
+    </script>
+
+</body>
+</html>
